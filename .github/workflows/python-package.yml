@@ -24,3 +24,4 @@ jobs:
     - name: Test build binding
       run: |
         ./generate_proto.sh
+        python -c "from chimera_llm_proto import chimera_llm_pb2, chimera_llm_pb2_grpc"

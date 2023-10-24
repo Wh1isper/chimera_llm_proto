@@ -21,6 +21,7 @@ To create a Python source package (`.tar.gz`) and the binary package (`.whl`) in
 
 ```bash
 rm -rf dist/*
+./generate_proto.sh
 python -m build
 ```
 
