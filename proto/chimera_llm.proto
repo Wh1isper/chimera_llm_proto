@@ -1,13 +1,13 @@
 syntax = "proto3";
 
 service LLM {
-    rpc Inspect(InspectRequest) returns (InspectResponse) {}
+    rpc Inspect(InspectRequest) returns (stream InspectResponse) {}
     rpc LoadModel(LoadModelRequest) returns (LoadModelResponse) {}
     rpc Completion(CompletionRequest) returns (CompletionPrediction) {}
     rpc Chat(ChatRequest) returns (ChatPrediction) {}
 }
 
-enum ModelType{
+enum ModelTag{
     MODEL_TYPE_UNKNOWN = 0;
     GENERAL = 1;
     CHAT = 2;
@@ -21,9 +21,13 @@ enum Status{
     ERROR = 3;
 }
 
-message InspectRequest {}
+message InspectRequest {
+    // report duration in seconds, client can detect the server status by this
+    // 0 means server decide the report duration
+    uint32 report_duration = 1;
+}
 message AvaliableModel {
-    repeated ModelType model_type = 1;
+    repeated ModelTag model_tagas = 1;
     string model_id = 2;
     string model_name = 3;
     string size = 4;
@@ -36,6 +40,8 @@ message InspectResponse {
 
 message LoadModelRequest {
     string model_id = 1;
+
+    string json_model_args = 999;
 }
 message LoadModelResponse {
     string model_id = 1;
@@ -49,17 +55,22 @@ enum Role {
     ASSISTANT = 3;
 }
 
-message CommonArgs {
+
+message InferenceArgs {
     float temperature = 1;
     float top_p = 2;
     uint32 max_gen_len = 3;
-    uint32 repetition_penalty = 5;
+    uint32 repetition_penalty = 4;
+
+    // A json string for extra args, will merge into inference args
+    // Map's value is not dynamic type, so we use json string
+    string json_extra_args = 999;
 }
 
 message CompletionRequest{
     string request_id = 1;
     string prompt = 2;
-    CommonArgs common_args = 3;
+    InferenceArgs inference_args = 3;
 }
 
 message CompletionPrediction{
@@ -76,7 +87,7 @@ message ChatMessage{
 message ChatRequest{
     string request_id = 1;
     repeated ChatMessage messages = 2;
-    CommonArgs common_args = 3;
+    InferenceArgs inference_args = 3;
 }
 
 message ChatPrediction{
