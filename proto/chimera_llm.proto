@@ -42,11 +42,11 @@ message InspectResponse {
 message LoadModelRequest {
     uint32 model_id = 1;
 
-    string json_model_args = 999;
+    string json_model_param = 999;
 }
 message LoadModelResponse {
-    uint32 model_id = 1;
-    Status current_status = 2;
+    Status current_status = 1;
+    AvaliableModel current_model = 2;
 }
 
 enum Role {
