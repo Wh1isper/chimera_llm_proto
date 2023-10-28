@@ -28,7 +28,7 @@ message InspectRequest {
 }
 message AvaliableModel {
     repeated ModelTag model_tagas = 1;
-    string model_id = 2;
+    uint32 model_id = 2;
     string model_name = 3;
     string size = 4;
     string model_description = 5;
@@ -36,15 +36,16 @@ message AvaliableModel {
 message InspectResponse {
     repeated AvaliableModel avaliable_models = 1;
     Status current_status = 2;
+    AvaliableModel current_model = 3;
 }
 
 message LoadModelRequest {
-    string model_id = 1;
+    uint32 model_id = 1;
 
     string json_model_args = 999;
 }
 message LoadModelResponse {
-    string model_id = 1;
+    uint32 model_id = 1;
     Status current_status = 2;
 }
 
