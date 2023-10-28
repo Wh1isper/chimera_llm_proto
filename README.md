@@ -6,7 +6,7 @@
 
 # chimera_llm_proto
 
-This is a python package for chimera llm protocol.
+This is a python package for [chimera llm](https://github.com/Wh1isper/chimera_llm) protocol.
 
 ## Install
 

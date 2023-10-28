@@ -28,7 +28,7 @@ content-type = "text/markdown"
 text = "BSD 3-Clause License"
 
 [project.urls]
-Source = "https://github.com/wh1isper/chimera_llm_proto"
+Source = "https://github.com/wh1isper/chimera_llm"
 
 [tool.check-manifest]
 ignore = [".*"]
