@@ -570,4 +570,4 @@ dmypy.json
 cython_debug/
 
 
-chimera_llm_proto/*_pb2*
+# chimera_llm_proto/*_pb2*

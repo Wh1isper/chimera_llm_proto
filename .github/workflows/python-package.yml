@@ -25,3 +25,7 @@ jobs:
       run: |
         ./generate_proto.sh
         python -c "from chimera_llm_proto import chimera_llm_pb2, chimera_llm_pb2_grpc"
+    # Make a commit for generated files
+    - uses: stefanzweifel/git-auto-commit-action@v5
+      with:
+        commit_message: Generate python bindings
