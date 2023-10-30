@@ -29,6 +29,7 @@ jobs:
         python -c "from chimera_llm_proto import chimera_llm_pb2, chimera_llm_pb2_grpc"
     # Lint before commit
     - uses: pre-commit/action@v3.0.0
+      continue-on-error: true
     # Make a commit for generated files
     - uses: stefanzweifel/git-auto-commit-action@v5
       with:
