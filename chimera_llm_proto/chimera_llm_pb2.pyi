@@ -13,7 +13,7 @@ from typing import (
 DESCRIPTOR: _descriptor.FileDescriptor
 
 class ModelTag(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
-    __slots__ = []
+    __slots__ = ()
     MODEL_TYPE_UNKNOWN: _ClassVar[ModelTag]
     GENERAL: _ClassVar[ModelTag]
     CHAT: _ClassVar[ModelTag]
@@ -21,14 +21,14 @@ class ModelTag(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
     CODE: _ClassVar[ModelTag]
 
 class Status(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
-    __slots__ = []
+    __slots__ = ()
     STATUS_UNKNOWN: _ClassVar[Status]
     INITLIZING: _ClassVar[Status]
     READY: _ClassVar[Status]
     ERROR: _ClassVar[Status]
 
 class Role(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
-    __slots__ = []
+    __slots__ = ()
     ROLE_UNKNOWN: _ClassVar[Role]
     SYSTEM: _ClassVar[Role]
     USER: _ClassVar[Role]
@@ -49,13 +49,13 @@ USER: Role
 ASSISTANT: Role
 
 class InspectRequest(_message.Message):
-    __slots__ = ["report_duration"]
+    __slots__ = ("report_duration",)
     REPORT_DURATION_FIELD_NUMBER: _ClassVar[int]
     report_duration: int
     def __init__(self, report_duration: _Optional[int] = ...) -> None: ...
 
 class AvaliableModel(_message.Message):
-    __slots__ = ["model_tagas", "model_id", "model_name", "size", "model_description"]
+    __slots__ = ("model_tagas", "model_id", "model_name", "size", "model_description")
     MODEL_TAGAS_FIELD_NUMBER: _ClassVar[int]
     MODEL_ID_FIELD_NUMBER: _ClassVar[int]
     MODEL_NAME_FIELD_NUMBER: _ClassVar[int]
@@ -76,7 +76,7 @@ class AvaliableModel(_message.Message):
     ) -> None: ...
 
 class InspectResponse(_message.Message):
-    __slots__ = ["avaliable_models", "current_status", "current_model"]
+    __slots__ = ("avaliable_models", "current_status", "current_model")
     AVALIABLE_MODELS_FIELD_NUMBER: _ClassVar[int]
     CURRENT_STATUS_FIELD_NUMBER: _ClassVar[int]
     CURRENT_MODEL_FIELD_NUMBER: _ClassVar[int]
@@ -91,7 +91,7 @@ class InspectResponse(_message.Message):
     ) -> None: ...
 
 class LoadModelRequest(_message.Message):
-    __slots__ = ["model_id", "json_model_param"]
+    __slots__ = ("model_id", "json_model_param")
     MODEL_ID_FIELD_NUMBER: _ClassVar[int]
     JSON_MODEL_PARAM_FIELD_NUMBER: _ClassVar[int]
     model_id: int
@@ -101,7 +101,7 @@ class LoadModelRequest(_message.Message):
     ) -> None: ...
 
 class LoadModelResponse(_message.Message):
-    __slots__ = ["current_status", "current_model"]
+    __slots__ = ("current_status", "current_model")
     CURRENT_STATUS_FIELD_NUMBER: _ClassVar[int]
     CURRENT_MODEL_FIELD_NUMBER: _ClassVar[int]
     current_status: Status
@@ -113,7 +113,7 @@ class LoadModelResponse(_message.Message):
     ) -> None: ...
 
 class InferenceArgs(_message.Message):
-    __slots__ = ["temperature", "top_p", "max_gen_len", "repetition_penalty", "json_extra_args"]
+    __slots__ = ("temperature", "top_p", "max_gen_len", "repetition_penalty", "json_extra_args")
     TEMPERATURE_FIELD_NUMBER: _ClassVar[int]
     TOP_P_FIELD_NUMBER: _ClassVar[int]
     MAX_GEN_LEN_FIELD_NUMBER: _ClassVar[int]
@@ -134,7 +134,7 @@ class InferenceArgs(_message.Message):
     ) -> None: ...
 
 class CompletionRequest(_message.Message):
-    __slots__ = ["request_id", "prompt", "inference_args"]
+    __slots__ = ("request_id", "prompt", "inference_args")
     REQUEST_ID_FIELD_NUMBER: _ClassVar[int]
     PROMPT_FIELD_NUMBER: _ClassVar[int]
     INFERENCE_ARGS_FIELD_NUMBER: _ClassVar[int]
@@ -149,7 +149,7 @@ class CompletionRequest(_message.Message):
     ) -> None: ...
 
 class CompletionPrediction(_message.Message):
-    __slots__ = ["request_id", "response_id", "generation"]
+    __slots__ = ("request_id", "response_id", "generation")
     REQUEST_ID_FIELD_NUMBER: _ClassVar[int]
     RESPONSE_ID_FIELD_NUMBER: _ClassVar[int]
     GENERATION_FIELD_NUMBER: _ClassVar[int]
@@ -164,7 +164,7 @@ class CompletionPrediction(_message.Message):
     ) -> None: ...
 
 class ChatMessage(_message.Message):
-    __slots__ = ["role", "content"]
+    __slots__ = ("role", "content")
     ROLE_FIELD_NUMBER: _ClassVar[int]
     CONTENT_FIELD_NUMBER: _ClassVar[int]
     role: Role
@@ -174,7 +174,7 @@ class ChatMessage(_message.Message):
     ) -> None: ...
 
 class ChatRequest(_message.Message):
-    __slots__ = ["request_id", "messages", "inference_args"]
+    __slots__ = ("request_id", "messages", "inference_args")
     REQUEST_ID_FIELD_NUMBER: _ClassVar[int]
     MESSAGES_FIELD_NUMBER: _ClassVar[int]
     INFERENCE_ARGS_FIELD_NUMBER: _ClassVar[int]
@@ -189,7 +189,7 @@ class ChatRequest(_message.Message):
     ) -> None: ...
 
 class ChatPrediction(_message.Message):
-    __slots__ = ["request_id", "response_id", "message"]
+    __slots__ = ("request_id", "response_id", "message")
     REQUEST_ID_FIELD_NUMBER: _ClassVar[int]
     RESPONSE_ID_FIELD_NUMBER: _ClassVar[int]
     MESSAGE_FIELD_NUMBER: _ClassVar[int]
